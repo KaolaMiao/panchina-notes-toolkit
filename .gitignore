@@ -1,0 +1,20 @@
+# Office 临时文件 (Office Temporary Files)
+~$*
+*.tmp
+*.bak
+
+# Windows 缩略图缓存
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 项目测试数据与输出结果 (Project Test Data & Output)
+# "附注工具测试用例" 包含大量具体公司名称和时间戳的生成的测试文件，建议忽略
+附注工具测试用例/
+
+# Gemini Agent 配置文件 (Local Agent Context)
+.gemini/
+GEMINI.md
+
+# 日志文件
+*.log
