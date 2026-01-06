@@ -25,11 +25,11 @@ End Sub
 
 ' 3. 关闭/卸载时
 Private Sub Workbook_BeforeClose(Cancel As Boolean)
-    Call Mod_Excel2Word.StopAppEventListeners
+    ' Call Mod_Excel2Word.StopAppEventListeners
 End Sub
 
 Private Sub Workbook_AddinUninstall()
-    Call Mod_Excel2Word.StopAppEventListeners
+    ' Call Mod_Excel2Word.StopAppEventListeners
 End Sub
 
 ' 【已删除 EnsureWordReference 函数】

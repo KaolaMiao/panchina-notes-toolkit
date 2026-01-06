@@ -18,3 +18,9 @@ GEMINI.md
 
 # 日志文件
 *.log
+
+# 指导文档 (Local Instruction)
+DEMO_GUIDE.md
+
+# 录屏过程临时文件 (Recording temporary files)
+recording_temp/

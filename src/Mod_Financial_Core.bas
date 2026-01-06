@@ -1959,7 +1959,7 @@ Public Function CheckTrialVersion() As Boolean
     Dim currentDate As Date
     
     ' 1. 设定截止日期
-    expireDate = DateSerial(2025, 12, 31)
+    expireDate = DateSerial(2026, 1, 31)
     currentDate = Date
     
     ' 2. 判断是否过期

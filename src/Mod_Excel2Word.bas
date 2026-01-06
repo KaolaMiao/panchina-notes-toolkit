@@ -2219,20 +2219,37 @@ End Sub
 ' =============================================================
 Public Sub StartAppEventListeners()
     On Error GoTo ErrHandle
-    
-    ' 如果已经存在，先不做处理（或者先销毁再重建）
-    If Not g_ExcelAppHandler Is Nothing Then Exit Sub
 
-    ' 尝试实例化
-    Set g_ExcelAppHandler = New ExcelAppEventHandler
-    Set g_ExcelAppHandler.xlApp = Application
-    
+    ' 1. 初始化 Excel 事件监听器
+    If g_ExcelAppHandler Is Nothing Then
+        Set g_ExcelAppHandler = New ExcelAppEventHandler
+        Set g_ExcelAppHandler.xlApp = Application
+    End If
+
+    ' 2. [新增] 尝试初始化 Word 监听器 (仅当 Word/WPS 已打开时)
+    '    这能保证用户点击 Toggle 按钮时，Word -> Excel 的跳转也能立即生效
+    If g_WordAppHandler Is Nothing Then
+        Dim app As Object
+        On Error Resume Next
+        ' 优先尝试 WPS
+        Set app = GetObject(, "Kwps.Application")
+        ' 其次尝试 Office Word
+        If app Is Nothing Then Set app = GetObject(, "Word.Application")
+        On Error GoTo ErrHandle ' 恢复主错误处理流程
+
+        ' 如果成功获取到已打开的 Word/WPS 实例，则挂接事件
+        If Not app Is Nothing Then
+            Set g_WordAppHandler = New WordEventHandler
+            Set g_WordAppHandler.appInstance = app
+        End If
+    End If
+
     Exit Sub
 
 ErrHandle:
-    ' 【关键】一旦出错，必须把对象清空，否则外层判断会失效
+    ' 发生任何错误时，清空所有监听器，确保安全
     Set g_ExcelAppHandler = Nothing
-    ' 可以选择在这里 debug.print，或者在外层弹窗
+    Set g_WordAppHandler = Nothing
 End Sub
 
 Public Sub StopAppEventListeners()
