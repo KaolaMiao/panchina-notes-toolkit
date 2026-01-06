@@ -40,12 +40,8 @@
 **结构替换模式 (Replace Mode):**
 ![替换模式](docs/images/demo_refresh_replace.gif)
 
-
-
 **单表精准更新 (Single Table Update):**
 ![单表更新](docs/images/demo_refresh_single.gif)
-
-
 
 **批量选区更新 (Batch Update):**
 ![批量刷新](docs/images/demo_refresh.gif)
@@ -73,10 +69,10 @@
 ### 5. 更多辅助功能 (Auxiliary Tools)
 内置表格清洗、自动序号修订等实用小工具，解决排版琐事。
 
+**表格清洗 (Table Cleaning):**
 ![表格清洗](docs/images/demo_table_clean.gif)
 
-自动序号修订
-
+**自动序号修订 (Serial Number Revision):**
 ![序号修订](docs/images/demo_serial_number.gif)
 
 ---
